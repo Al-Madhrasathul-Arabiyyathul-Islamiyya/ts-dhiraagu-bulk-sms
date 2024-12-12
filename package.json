@@ -1,0 +1,15 @@
+{
+  "name": "ts-dhiraagu-bulk-sms",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Ahmed Misbah",
+    "email": "ahmed.misbah@arabiyya.edu.mv"
+  },
+  "dependencies": {
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2"
+  }
+}
