@@ -1,15 +1,29 @@
 {
   "name": "ts-dhiraagu-bulk-sms",
   "version": "1.0.0",
-  "license": "MIT",
+  "description": "TypeScript SDK for Dhiraagu Bulk SMS Gateway",
   "author": {
     "name": "Ahmed Misbah",
     "email": "ahmed.misbah@arabiyya.edu.mv"
   },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --coverage",
+    "lint": "eslint 'src/**/*.ts'",
+    "prepublishOnly": "npm run build && npm test"
+  },
   "dependencies": {
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "xml2js": "^0.5.0"
   },
   "devDependencies": {
-    "@types/node": "^22.10.2"
-  }
+    "@types/node": "^22.10.2",
+    "eslint": "^8.0.0",
+    "jest": "^29.0.0",
+    "typescript": "^5.0.0"
+  },
+  "keywords": ["sms", "dhiraagu", "typescript", "sdk"]
 }
