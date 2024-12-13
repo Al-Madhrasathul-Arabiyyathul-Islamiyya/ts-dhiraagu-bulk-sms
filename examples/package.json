@@ -1,0 +1,23 @@
+{
+  "name": "dhiraagu-sms-example",
+  "version": "1.0.0",
+  "description": "Example project for testing the ts-dhiraagu-sms SDK",
+  "scripts": {
+    "start": "ts-node src/app.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "ts-dhiraagu-sms": "file:../",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "keywords": [
+    "sms",
+    "dhiraagu",
+    "typescript",
+    "example"
+  ],
+  "license": "MIT"
+}

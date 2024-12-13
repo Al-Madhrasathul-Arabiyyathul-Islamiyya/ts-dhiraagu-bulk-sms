@@ -9,10 +9,14 @@ export class DhiraaguSmsMessage extends DhiraaguSmsResponse {
 
   constructor(message: string, numbers: string[], response: any = {}) {
     super(response);
-    this.messageId = response?.TELEMESSAGE_CONTENT?.RESPONSE?.MESSAGE_ID ?? null;
-    this.messageKey = response?.TELEMESSAGE_CONTENT?.RESPONSE?.MESSAGE_KEY ?? null;
+
+    const content = response?.TELEMESSAGE?.TELEMESSAGE_CONTENT?.RESPONSE;
+    this.messageId = content?.MESSAGE_ID ?? null;
+    this.messageKey = content?.MESSAGE_KEY ?? null;
     this.message = message;
     this.numbers = numbers;
     this.sentDate = new Date().toISOString();
+    this.responseStatus = content?.RESPONSE_STATUS ?? null;
+    this.responseStatusDesc = content?.RESPONSE_STATUS_DESC ?? null;
   }
 }

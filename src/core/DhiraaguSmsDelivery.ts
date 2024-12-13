@@ -9,15 +9,19 @@ export class DhiraaguSmsDelivery extends DhiraaguSmsResponse {
 
   constructor(response: any = {}) {
     super(response);
-    this.messageId = response?.TELEMESSAGE_CONTENT?.MESSAGE_STATUS?.MESSAGE_ID ?? null;
-    this.messageStatusId = response?.TELEMESSAGE_CONTENT?.MESSAGE_STATUS?.STATUS_ID ?? null;
-    this.messageStatusDesc = response?.TELEMESSAGE_CONTENT?.MESSAGE_STATUS?.STATUS_DESCRIPTION ?? null;
 
-    const recipients = response?.TELEMESSAGE_CONTENT?.MESSAGE_STATUS?.RECIPIENT_STATUS ?? [];
-    this.devices = recipients.map((recipient: any) => new DhiraaguSmsDevice(recipient.DEVICE));
-  }
+    const content = response?.TELEMESSAGE?.TELEMESSAGE_CONTENT?.RESPONSE;
+    console.log("Delivery Response Content:", content);
 
-  getDevice(number: string): DhiraaguSmsDevice | null {
-    return this.devices.find((device) => device.number === number) || null;
+    this.messageId = content?.MESSAGE_ID ?? null;
+    this.messageStatusId = content?.RESPONSE_STATUS ?? null;
+    this.messageStatusDesc = content?.RESPONSE_STATUS_DESC ?? null;
+
+    const recipients = content?.RECIPIENT_STATUS ?? [];
+    this.devices = Array.isArray(recipients)
+      ? recipients.map(
+          (recipient: any) => new DhiraaguSmsDevice(recipient.DEVICE)
+        )
+      : [];
   }
 }
