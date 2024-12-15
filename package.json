@@ -1,5 +1,5 @@
 {
-  "name": "ts-dhiraagu-bulk-sms",
+  "name": "@al-madhrasathul-arabiyyathul-islamiyya/ts-dhiraagu-bulk-sms",
   "version": "1.0.0",
   "description": "TypeScript SDK for Dhiraagu Bulk SMS Gateway",
   "author": {
