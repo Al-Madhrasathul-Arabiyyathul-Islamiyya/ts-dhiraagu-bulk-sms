@@ -1,6 +1,8 @@
+import { parseStringPromise } from "xml2js";
+
 import { DhiraaguDeliveryException } from "../exceptions/DhiraaguDeliveryException";
 import { DhiraaguSmsException } from "../exceptions/DhiraaguSmsException";
-import { Logger } from "../types";
+import { type Logger } from "../types";
 import { renderXML, escapeXML } from "../utils/xmlRenderer";
 import { DhiraaguSmsDelivery } from "./DhiraaguSmsDelivery";
 import { DhiraaguSmsMessage } from "./DhiraaguSmsMessage";
@@ -9,7 +11,7 @@ export class DhiraaguSms {
   private username: string;
   private password: string;
   private url: string;
-  private logger: Logger | null;
+  private logger?: Logger;
 
   static readonly DEFAULT_API_URL =
     "https://bulksms.dhiraagu.com.mv/partners/xmlMessage.jsp";
@@ -18,7 +20,7 @@ export class DhiraaguSms {
     username: string,
     password: string,
     url: string = DhiraaguSms.DEFAULT_API_URL,
-    logger: Logger | null = console
+    logger?: Logger
   ) {
     this.username = username;
     this.password = password;
@@ -117,7 +119,7 @@ export class DhiraaguSms {
   }
 
   private async parseXml(xml: string): Promise<any> {
-    const { parseStringPromise } = await import("xml2js");
+    
     const options = {
       explicitArray: false,
       ignoreAttrs: true,
@@ -128,7 +130,7 @@ export class DhiraaguSms {
   }
 
   private log(...args: any[]) {
-    if (this.logger) {
+    if (this.logger?.log) {
       this.logger.log(...args);
     }
   }
